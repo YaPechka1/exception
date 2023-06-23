@@ -1,0 +1,12 @@
+.docs{
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+}
+.load{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}

@@ -1,0 +1,247 @@
+.header_mes {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+
+}
+
+.inner_menu {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+span {
+    font-size: 18px;
+}
+
+.dialog {
+    margin-top: 15px;
+    height: 70vh;
+    overflow-y: auto;
+    padding: 5px;
+    transition: 1s;
+    opacity: 0;
+}
+
+
+
+.message_from {
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #F8F8F8;
+    width: auto;
+    display: inline-block;
+    white-space: pre-line;
+}
+
+.message_to {
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #F8F8F8;
+    width: auto;
+    display: inline-block;
+    white-space: pre-line;
+    
+
+
+}
+
+.container_message {
+    margin: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.to {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+
+}
+.notif{
+    font-size: 15px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 0%;
+    left: 1%;
+    transform: translate(0, -101%);
+    display: inline-block;
+    width: auto;
+    padding: 5px;
+}
+
+.dialog_input {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    gap:5px
+}
+
+.dialog_input_data {
+    width: 100%;
+    border-radius: 5px;
+    /* margin: 5px; */
+    /* overflow: hidden; */
+    font-size: 23px;
+    resize: none;
+    
+
+
+}
+
+.button-white {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 5px;
+
+}
+
+.more {
+    background: url('./../../assets/svg/more.svg');
+    background-position: center;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    margin-right: 10px;
+
+
+}
+
+.add {
+    background: url('./../../assets/svg/fileadd.svg');
+    background-position: center;
+    width: 46px;
+    height: 46px;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    border: none;
+    background-color: green;
+    border-radius: 7px;
+    transition: 0.3s;
+
+
+
+}
+
+.send {
+
+    background: url('./../../assets/svg/send-fill-white.svg');
+    background-position: center;
+    width: 46px;
+    height: 46px;
+
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: none;
+    background-color: green;
+    border-radius: 7px;
+    transition: 0.3s;
+
+
+}
+
+.send:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.add:hover {
+    background-color: black;
+    cursor: pointer;
+}
+.message img, .message video{
+    max-width: 600px;
+    border-radius: 3px;
+    width: 100%;
+}
+.message{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 74px);
+}
+.icons{
+    /* height: 50px; */
+    border-radius: 5px;
+    width: 60px;
+}
+.header_mes img{
+    cursor: pointer;
+}
+.header_mes span{
+    font-size: 20px;
+    font-weight: 500;
+}
+.row{
+    display: flex;
+    gap:5px;
+    width: 100%;
+
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+.all > .block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    padding-top: 20px;
+    position: relative;
+}
+.all img, .all video{
+    max-width: 100%;
+    max-height: 75vh;
+
+    
+}
+.ent{
+    min-width: 100%;
+    min-height: 300px;
+    border: dashed 2px green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.ent img{
+    width: 50px;
+}
+textarea{
+    /* overflow-y: auto!important; */
+    padding: 5px 5px 10px 5px!important;
+    min-height: 35px;
+    max-height: 150px;
+}
+.close{
+    position: absolute;
+    right: 1%;
+    top:1%
+
+}

@@ -1,0 +1,18 @@
+<div style="width: 100%;display:flex;justify-content: space-between; ">
+  <h4 style="padding: 0; font-weight:500">Видео</h4><button class="close" mat-dialog-close></button>
+</div>
+<mat-dialog-content>
+  <div *ngIf="data"
+    style="display:flex;margin:auto; width:100%; flex-wrap: wrap; justify-content:center; align-items: center; gap:5px">
+    <video (click)="video_src=i.video_src;show=!show" width="300" *ngFor="let i of data">
+      <source [src]="i.video_src">
+    </video>
+  </div>
+  <h2 *ngIf="!data" class="empty">Пусто</h2>
+
+</mat-dialog-content>
+<div class="all" *ngIf="show" (click)="show=!show">
+  <video controls>
+    <source [src]="video_src">
+  </video>
+</div>

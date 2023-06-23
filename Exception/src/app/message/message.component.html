@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="max">
+  <input
+      style="width: 100%; padding: 10px 5px;" type="text"
+      placeholder="Поиск беседы:" name="search" [(ngModel)]="search">
+  </div>
+  <div class="block">
+
+    <mat-nav-list id="cont">
+      <a *ngFor="let i of message_list | filter:search" mat-list-item routerLink="viewer_mes" [queryParams]="{
+        id:i.id_message_list,
+        message_name:i.message_name
+      }">
+        <img class="icons" [src]="i.user_logo_src">{{i.message_name}}<p>{{i.text_message}}<br> <span
+            class="time">{{i.date_and_time}}</span></p></a>
+      <a mat-list-item (click)="pushMessageDialog()">
+        <img class="icons" src="./../../assets/svg/plus-square.svg" alt="">  Создать беседу
+      </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="cont.children.length==0" style="margin-bottom: 10px;">
+      <a mat-list-item>
+        <p style="text-align:center;font-size: 23px;">Мы ничего не нашли</p>
+      </a>
+    </mat-nav-list>
+  </div>
+  <div class="block min">
+    <label>
+      <input type="text" placeholder="Поиск беседы:" name="search" [(ngModel)]="search">
+    </label>
+
+  </div>
+</div>

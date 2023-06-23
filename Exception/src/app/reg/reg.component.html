@@ -1,0 +1,55 @@
+<div style="min-height: calc(100vh - 200px);">
+    
+    <div class="block">
+        <h2>Регистрация</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-line">
+                <label for="login">Логин:</label>
+                <input formControlName="login" id="login" type="text" >
+                <span class="red">{{status}}</span>
+                <span class="red" *ngIf="form.get('login')!.invalid && form.get('login')!.touched">
+                    <span *ngIf="form.get('login')!.errors!['required']">Поле не должно быть пустым</span>
+                    <span *ngIf="form.get('login')!.errors!['minlength']">Поле должно иметь длину минимум 2 символа</span>
+                </span>
+            </div>
+            <div class="form-line">
+                <label for="nick">Никнейм:</label>
+                <input formControlName="nick_name" id="nick" type="text" >
+                <span class="red" *ngIf="form.get('nick_name')!.invalid && form.get('nick_name')!.touched">
+                    <span *ngIf="form.get('nick_name')!.errors!['required']">Поле не должно быть пустым</span>
+                    <span *ngIf="form.get('nick_name')!.errors!['minlength']">Поле должно иметь длину минимум 2 символа</span>
+                </span>
+            </div>
+            <div class="form-line">
+                <label for="email">Электронная почта:</label>
+                <input formControlName="email" id="email" type="text" >
+                <span class="red" *ngIf="form.get('email')!.invalid && form.get('email')!.touched">
+                    <span *ngIf="form.get('email')!.errors!['required']">Поле не должно быть пустым</span>
+                    <span *ngIf="form.get('email')!.errors!['email']">Это не электронная почта</span>
+                </span>
+            </div>
+
+            <div class="form-line">
+                <label for="password">Пароль:</label>
+                <input formControlName="password" id="password" type="password" >
+                <span class="red" *ngIf="form.get('password')!.invalid && form.get('password')!.touched">
+                    <span *ngIf="form.get('password')!.errors!['required']">Поле не должно быть пустым</span>
+                    <span *ngIf="form.get('password')!.errors!['minlength']">Поле должно иметь длину минимум 8 символов</span>
+                </span>
+            </div>
+            <div class="form-line">
+                <label for="password">Подтвердите пароль:</label>
+                <input formControlName="passwordrep" id="password" type="password" >
+                <span class="red" *ngIf="form.get('passwordrep')!.invalid && form.get('passwordrep')!.touched">
+                    <span *ngIf="form.get('passwordrep')!.errors!['required']">Поле не должно быть пустым</span>
+                    <span *ngIf="form.get('passwordrep')!.errors!['minlength']">Поле должно иметь длину минимум 8 символов</span>
+                </span>
+                <span  class="red" *ngIf="form.get('passwordrep')!.value != form.get('password')!.value && form.get('passwordrep')!.touched && !form.get('passwordrep')!.invalid">Пароли не совпали</span>
+            </div>
+            <div class="form-line">
+                <button [disabled]="form.invalid || form.get('passwordrep')!.value != form.get('password')!.value" type="submit" class="button-white">Зарегистрироваться</button>
+            </div>
+        </form>
+
+    </div>
+</div>

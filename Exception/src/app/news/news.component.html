@@ -1,0 +1,41 @@
+<div style="min-height: calc(100vh - 200px);">
+  <div class="block"
+    style="display: flex;justify-content: space-between; align-content:center; align-items:center; flex-wrap: wrap;">
+
+    <nav class="nav line"
+      style="display: flex;justify-content: space-between; align-content:center; align-items:center; flex-wrap: wrap; margin: auto;">
+      <button class="profile-link" (click)="Reset(0)">Всё</button>
+      <button class="profile-link" (click)="Reset(1)">Друзья</button>
+      <button class="profile-link" (click)="Reset(2)">Объединения</button>
+
+    </nav>
+    <mat-nav-list style="margin: auto;">
+      <a mat-list-item (click)="openCreateZap()" style="margin-bottom:10px"><object class="icons" type="image/svg+xml"
+          data="./../../assets/svg/plus-square.svg">Your browser does not support SVG</object>Создать запись</a>
+
+    </mat-nav-list>
+  </div>
+
+  <div *ngIf="(last_index=='0' && !record_list) || (last_index=='0' && record_list && record_list.length==0)" class="block" style="padding: 30px 10px;">
+    <h2>Здесь пока пуcто, подпишитесь на группы или добавьте кого-нибудь в друзья</h2>
+  </div>
+
+  <div *ngFor="let i of record_list" class="block">
+    <div class="zap">
+      <mat-nav-list>
+        <a *ngIf="i.type=='0' " mat-list-item routerLink="/group/viewer_group" [queryParams]="{id:i.id}"><img class="icons" [src]="i.logo_src">{{i.name}}<p
+            class="zap_inner_time">{{i.date_record}}</p></a>
+        <a *ngIf="i.type=='1' " mat-list-item routerLink="/profile/viewer_prof" [queryParams]="{id:i.id}"><img class="icons" [src]="i.logo_src">{{i.name}}<p
+            class="zap_inner_time">{{i.date_record}}</p></a>
+      </mat-nav-list>
+      <p>{{i.text}}</p>
+      <img *ngIf="i.img_src!=null" class="photo" [src]="i.img_src">
+      <video *ngIf="i.video_src!=null" controls width="100%">
+        <source [src]="i.video_src" type="video/mp4">
+      </video>
+      
+    </div>
+  </div>
+  <mat-spinner diameter="45" *ngIf="!status"></mat-spinner>
+  <div *ngIf="status" class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"></div>

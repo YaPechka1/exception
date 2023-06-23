@@ -1,0 +1,32 @@
+.icons{
+    width: 50px;
+}
+.red{
+    background-color: red;
+    color: white;
+    margin-right: 0;
+    margin-left: auto;
+}
+.line{
+    display: flex;
+    align-items: center;
+    gap:10px
+}
+.temp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.temp > .button-white{
+    display: flex;
+    align-self: center;
+    gap:3px
+
+}
+.icons{
+    width: 60px;
+    
+    border-radius: 5px;
+}

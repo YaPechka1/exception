@@ -1,0 +1,30 @@
+<div style="width: 100%;display:flex;justify-content: space-between; align-items: center; ">
+    <h4 style="padding: 0; font-weight:500">Создать запись</h4>
+    <button class="close" #close mat-dialog-close></button>
+</div>
+<mat-dialog-content>
+    
+        <div class="row">
+            <textarea cdkTextareaAutosize [(ngModel)]="text" [cdkAutosizeMaxRows]="3"></textarea>
+        </div>
+        <div class="row">
+            <div class="column">
+                <button class="button-white" (click)="OpenPhotoDialog()">Фото</button>
+                <input accept="image/png, image/jpeg" type="file" hidden #photo (change)="photoEdit($event)">
+                <div *ngIf="!imgSrc" class="ent">
+                    <img src="./../../assets/svg/image.svg" alt="">
+                </div>
+                <img *ngIf="imgSrc" [src]="imgSrc">
+                <mat-spinner diameter="45" *ngIf="loadImg"></mat-spinner>
+            </div>
+            <div class="column">
+                <button class="button-white" (click)="OpenVideoDialog()">Видео</button>
+                <input accept="video/mp4" type="file" hidden #video (change)="videoEdit($event)">
+                <div class="ent" *ngIf="!videoSrc"><img src="./../../assets/svg/camera-reels-fill.svg" alt=""></div>
+                <video *ngIf="videoSrc" [src]="videoSrc" controls></video>
+                <mat-spinner diameter="45" *ngIf="loadVideo"></mat-spinner>
+            </div>
+        </div>
+        <button [disabled]="loadVideo || loadImg" (click)="CreateRecord()" class="button-white">Создать</button>
+
+</mat-dialog-content>

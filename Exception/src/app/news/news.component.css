@@ -1,0 +1,11 @@
+.block{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.profile-link{
+    margin: auto;
+}
+img.icons{
+    width: 55px;
+    border-radius: 5px;
+}

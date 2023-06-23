@@ -1,0 +1,10 @@
+.button-white{
+    margin: 2.5px;
+}
+.red{
+    background-color: red;
+    color: white;
+}
+.red:hover{
+    background-color: black;
+}

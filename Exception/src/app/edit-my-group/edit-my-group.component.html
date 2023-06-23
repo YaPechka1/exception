@@ -1,0 +1,120 @@
+<div style="min-height: calc(100vh - 200px);">
+  <div class="block" style="display: flex;justify-content: space-around; align-items: center; flex-wrap: wrap;">
+    <div class="line" style="display: flex; align-items: center; align-content: center;">
+      <img class="avatar" [src]="group_info.group_logo_url">
+      <div style="width: 1px;">
+        <button *ngIf="editmode" (click)="openDialogPhotoAvatar()" class="button-white"
+          style="position: relative; bottom:-45px; left: -100px;">Редактировать</button>
+      </div>
+      <input type="text" placeholder="Название объединения" [(ngModel)]="group_info.group_name" class="contact" [value]="group_info.group_name"
+        [readonly]="!editmode">
+
+    </div>
+    <nav class="nav line">
+      <button class="button-white red" (click)="deleteGroup()" >Удалить</button>
+      <button class="profile-link" (click)="openDialogPhoto()">Фотокарточки</button>
+      <button class="profile-link" (click)="openDialogVideo()">Видео</button>
+      <button class="profile-link" (click)="openDialogPeople()">Участники</button>
+
+      <mat-slide-toggle (click)="check()" [(ngModel)]="editmode">Изменить</mat-slide-toggle>
+    </nav>
+  </div>
+  <div class="block">
+    <table class="table-3" style="text-align: center">
+      <thead>
+        <tr>
+          <th>Информация</th>
+          <th>Контакты</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Информация" class="one"><textarea placeholder="Информация о группе:" [readonly]="!editmode" [(ngModel)]="group_info.about">{{group_info.about}}</textarea></td>
+          <td data-label="Контакты" class="one">
+            <table class="table-3">
+              <tbody>
+
+                <tr>
+                  <td data-label="Администратор" class="hidden green">Администратор</td>
+                  <td data-label="Администратор" class="green"><mat-nav-list><a mat-list-item
+                        routerLink="/profile/viewer_prof" [queryParams]="{id:group_info.id_admin}"><img class="icons"
+                          [src]="group_info.user_logo_src">{{group_info.nick_name}} </a></mat-nav-list></td>
+                </tr>
+                <tr>
+                  <td data-label="Email" class="hidden green">Почта</td>
+                  <td data-label="Почта" class="green"><input type="text" [(ngModel)]="group_info.mail" [readonly]="!editmode" class="contact" placeholder="Почта:" [value]="group_info.mail"></td>
+                </tr>
+                <tr>
+                  <td data-label="Тематика" class="hidden green">Тематика</td>
+                  <td data-label="Тематика" class="green"><input type="text" [(ngModel)]="group_info.theme" [readonly]="!editmode" class="contact" placeholder="Тематика:" [value]="group_info.theme"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="block"  id="q">
+
+
+      <span>Что у вас нового?</span>
+
+      <mat-nav-list>
+        <a mat-list-item  id="np" (click)="show=!show">
+          <object class="icons" type="image/svg+xml" data="./../../assets/svg/plus-square.svg">
+            Your browser does not support SVG
+          </object>
+          Создать запись
+        </a>
+      </mat-nav-list>
+
+ 
+
+  </div>
+  <div class="block" *ngFor="let i of group_record">
+    <div class="zap">
+      <mat-nav-list>
+        <a mat-list-item><img class="user_logo_mini" [src]="i.group_logo_url"> {{i.group_name}} <p
+            class="zap_inner_time">{{i.date_record}}</p></a>
+
+      </mat-nav-list>
+      <p>{{i.text}}</p>
+      <img *ngIf="i.img_src!=null" class="photo" [src]="i.img_src">
+      <video *ngIf="i.video_src!=null" controls width="100%">
+        <source [src]="i.video_src" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div *ngIf="status" class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"></div>
+  <button (click)="Save()" *ngIf="editmode" class="button-white save"> </button>
+</div>
+<div class="all" *ngIf="show">
+  <div class="block">
+    <button class="close" (click)="videoSrc=null;imgSrc=null;show=!show"></button>
+    <div class="row">
+      <textarea  cdkTextareaAutosize [(ngModel)]="record.text" [cdkAutosizeMaxRows]="3"></textarea>
+    </div>
+    <div class="row">
+      <div class="column">
+        <button class="button-white" (click)="OpenPhotoDialog()">Фото</button>
+        <input accept="image/png, image/jpeg" type="file" hidden #photo (change)="photoEdit($event)">
+        <div *ngIf="!imgSrc" class="ent">
+          <img src="./../../assets/svg/image.svg" alt="">
+        </div>
+        <img *ngIf="imgSrc" [src]="imgSrc">
+        <mat-spinner diameter="45" *ngIf="loadImg"></mat-spinner>
+      </div>
+      <div class="column">
+        <button class="button-white" (click)="OpenVideoDialog()">Видео</button>
+        <input accept="video/mp4" type="file" hidden #video (change)="videoEdit($event)">
+        <div class="ent" *ngIf="!videoSrc"><img src="./../../assets/svg/camera-reels-fill.svg" alt=""></div>
+        <video *ngIf="videoSrc" [src]="videoSrc" controls></video>
+        <mat-spinner diameter="45" *ngIf="loadVideo"></mat-spinner>
+      </div>
+    </div>
+    <button [disabled]="loadVideo || loadImg" (click)="createRecord()" class="button-white">Создать</button>
+  </div>
+</div>

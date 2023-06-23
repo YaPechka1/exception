@@ -1,0 +1,28 @@
+.block{
+width: 100%;
+
+
+}
+.button-white{
+    margin: 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 18px;
+}
+h3{
+margin: 0;
+margin-bottom: 5px;
+}
+.not-found{
+    width: 75%; margin:auto;
+}
+@media screen and (max-width: 1000px){
+.not-found{
+width: 85%;
+}
+}
+@media screen and (max-width: 850px){
+    .not-found{
+    width: 95%;
+    }
+    }

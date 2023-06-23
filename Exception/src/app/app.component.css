@@ -1,0 +1,106 @@
+mat-toolbar{
+    background-color: black;
+    color: greenyellow;
+}
+mat-toolbar-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.inner_menu{
+    display: flex;
+    align-items: center;
+}
+mat-menu{
+    display: none;
+}
+.more {
+    background: url('./../assets/svg/three-dots-vertical.svg');
+    display: none;
+    background-position: center;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    margin-right: 10px;
+
+
+}
+#q{
+    position: absolute; bottom: 0; left: 0;
+}
+mat-sidenav{
+    transition: min-height 0.3s;
+    /* transition: 0.3s; */
+    min-height: calc(100vh - 74px);
+    top:0;
+    border-radius: 5px ;
+    margin: 5px;
+    padding: 5px; 
+    max-height: 88vh;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.358); /* Параметры тени */
+    
+}
+
+mat-sidenav-content{
+    padding: 5px;
+
+    
+}
+
+.nav-link{
+    padding: 7px;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+.nav-link:hover{
+    opacity: 0.7;
+}
+.inner-menu{
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+}
+.menu-button-q{
+    background:url('./../assets/svg/menu.svg');
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size:100%;
+    
+    background-color: black;
+}
+@media screen and (max-width: 850px) {
+    mat-sidenav{
+        position: fixed;
+        max-height: 99vh;
+        width: 50%;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    mat-sidenav{
+        border-radius:0px ;
+        margin: 0;
+        width: 85%;
+        max-height: 100vh;
+
+    }
+#q{
+    bottom: 1%;
+}
+}
+@media screen and (max-width: 550px){
+    .more, mat-menu{
+        display: block;
+    }
+    .nav-link{
+        display: none;
+    }
+}

@@ -1,0 +1,133 @@
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+	background-color: yellowgreen;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+	background-color: green;
+}
+::ng-deep .mat-ink-bar{
+    background: green!important;
+}
+
+mat-slide-toggle {
+	margin: 0%;
+	margin-left: auto;
+}
+
+table.table-3 {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+table.table-3 tr {}
+
+table.table-3 th {
+	color: green;
+}
+
+table.table-3 th,
+table.table-3 td {
+	text-align: left;
+	padding: 8px;
+
+}
+input{
+    width: 100%;
+    font-size: 17.5px;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: solid 2px black;
+    outline: none;
+
+}
+.icons{
+    width: 55px;
+    border-radius: 5px;
+}
+
+p{
+    text-align: right;
+    width: 100%;
+    min-width: 100px;
+}
+::ng-deep .mat-ink-bar{
+    background: green!important;
+}
+@media screen and (max-width: 700px) {
+	table.table-3 {
+		border: 0;
+	}
+
+
+
+	table.table-3 thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	table.table-3 tr {
+		border-bottom: 1px solid #ddd;
+		display: block;
+		margin-bottom: 30px;
+	}
+
+	table.table-3 td {
+		display: block;
+		text-align: right;
+	}
+
+	table.table-3 td::before {
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: green;
+	}
+
+	table.table-3 td:last-child {
+		border-bottom: 0;
+	}
+}
+
+select {
+
+	font-size: 18px;
+}
+
+.gray {
+	background-color: gray;
+}
+
+.gray:hover,
+.red:hover {
+	background-color: black;
+}
+
+.red {
+	background-color: red;
+}
+
+.right {
+	margin: auto;
+	margin-right: 0;
+}
+
+.right:last-child {
+	margin-left: 0;
+}
+.link-line a{
+	width: 100%;
+}
+.link-line, .link-line a{
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+}

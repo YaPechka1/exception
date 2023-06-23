@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="block">
+    <div class="header_mes">
+        <span>{{message_name}}</span>
+        <img (click)="openDialogPeople()" src="./../../assets/svg/people-fill.svg" class="icons">
+    </div>
+  </div>
+  <div class="block dialog" #dialog infiniteScroll [scrollWindow]="false" [infiniteScrollDisabled]="check" [infiniteScrollDistance]="3"  (scrolledUp)="MessageDialog()">
+    <div class="container_message" *ngFor="let i of message_dialog; let idx = index" [ngClass]="{to:i.id_user==id_user}">
+      <img  *ngIf="i.id_user!=id_user"  routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}" [src]="i.user_logo_src" class="icons">
+      <div  *ngIf="i.id_user!=id_user" class="message message_from">
+        <span>{{i.text_message}}</span>
+        <img *ngIf="i.img" [src]="i.img" alt="">
+        <video *ngIf="i.video" [src]="i.video" controls ></video>
+        <span class="time">{{i.date}}</span>
+      </div>
+      <div  *ngIf="i.id_user==id_user" class="message message_to">
+        <span>{{i.text_message}}</span>
+        <img *ngIf="i.img" [src]="i.img" alt="">
+        <video *ngIf="i.video" [src]="i.video" controls ></video>
+        <span class="time">{{i.date}}</span>
+      </div>
+      <span *ngIf="idx==message_dialog.length-1" id="test"></span>
+    </div>
+    
+
+  </div>
+  <div class="dialog_input block">
+    <div *ngIf="imgSrc && !show" class="notif photo">1 фото</div>
+    <div *ngIf="videoSrc && !show" [ngStyle]="{
+      transform: (imgSrc) ? 'translate(105%, -101%)' : 'translate(0%, -101%)'
+    }" class="notif video">1 видео</div>
+    <textarea class="dialog_input_data" [(ngModel)]="text" (keydown.enter)="enter($event)" cdkTextareaAutosize>{{text}}</textarea>
+    <button class="add" (click)="show=!show">
+    </button>
+
+    <button class="send" (click)="pushMessage()"></button>
+  </div>
+</div>
+<div class="all" *ngIf="show" >
+  <div class="block">
+    <button class="close" (click)="videoSrc=null;imgSrc=null;show=!show"></button>
+    <div class="row">
+    <div class="column">
+      <button class="button-white" (click)="OpenPhotoDialog()">Фото</button>
+      <input accept="image/png, image/jpeg" type="file" hidden #photo (change)="photoEdit($event)">
+      <div *ngIf="!imgSrc" class="ent">
+        <img src="./../../assets/svg/image.svg" alt="">
+      </div>
+      <img *ngIf="imgSrc"  [src]="imgSrc">
+      <mat-spinner diameter="45" *ngIf="loadImg"></mat-spinner>
+    </div>
+    <div class="column">
+      <button class="button-white" (click)="OpenVideoDialog()">Видео</button>
+      <input accept="video/mp4" type="file" hidden #video (change)="videoEdit($event)">
+      <div class="ent" *ngIf="!videoSrc"><img src="./../../assets/svg/camera-reels-fill.svg" alt=""></div>
+      <video *ngIf="videoSrc" [src]="videoSrc" controls></video>
+      <mat-spinner diameter="45" *ngIf="loadVideo"></mat-spinner>
+    </div>
+    </div>
+    <button [disabled]="loadVideo || loadImg" (click)="show=!show" class="button-white">Прикрепить</button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+input{
+    width: 100%;
+    font-size: 17.5px;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: solid 2px black;
+    outline: none;
+
+}
+.icons{
+    width: 55px;
+    border-radius: 5px;
+}
+::ng-deep .mat-ink-bar{
+    background: green!important;
+}
+.link-line, .link-line a{
+    display: flex;
+    align-items: center;
+    gap:5px;
+    /* width: 100%; */
+}
+.link-line span{
+    /* width: 100%; */
+}
+.align-rigth{
+    margin-left: auto;
+    margin-right: 0;
+}

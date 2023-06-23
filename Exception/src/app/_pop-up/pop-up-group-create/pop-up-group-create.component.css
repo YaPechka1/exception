@@ -1,0 +1,9 @@
+.form{
+    display: grid;
+    gap:5px;
+    width: 75%;
+    margin: auto;
+}
+input{
+    font-size: 18px;
+}

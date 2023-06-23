@@ -1,0 +1,9 @@
+<div style="width: 100%;display:flex;justify-content: right; "><button class="close" mat-dialog-close></button></div>
+<mat-dialog-content>
+    <div class="form">
+        <input type="text" [(ngModel)]="create_group.group_name" placeholder="Название:">
+        <input type="text" [(ngModel)]="create_group.theme" placeholder="Тематика:">
+        <button [disabled]="create_group.group_name=='' || create_group.theme==''" class="button-white"
+            mat-dialog-close (click)="createGroup()">Создать</button>
+    </div>
+</mat-dialog-content>

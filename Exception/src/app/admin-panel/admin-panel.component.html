@@ -1,0 +1,39 @@
+<div style="min-height: calc(100vh - 200px);">
+  <div class="block">
+    <mat-tab-group mat-align-tabs="center" mat-stretch-tabs [(selectedIndex)]="tabs">
+
+      <mat-tab label="Пользователи">
+        <div style="padding: 10px;">
+          <input type="text" [(ngModel)]="user_name" (input)="getUserOnSearch(true)" placeholder="Все люди:">
+          <mat-nav-list>
+            <a *ngFor="let i of user_list; let idx = index" mat-list-item class="link-line">
+              <a routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+              </a>
+              <button class="button-white red" (click)="deleteUser(i.id_user,idx)">Удалить</button>
+            </a>
+
+          </mat-nav-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Объединения">
+        <div style="padding: 10px;">
+          <input type="text" placeholder="Поиск объединений" [(ngModel)]="group_name" (input)="getGroupOnSearch(true)">
+          <mat-nav-list>
+            <a *ngFor="let i of group_list_all; let idx = index" mat-list-item class="link-line">
+              <a routerLink="/group/viewer_group" [queryParams]="{id:i.id_group}"><img class="icons"
+                  [src]="i.group_logo_url">{{i.group_name}}</a>
+              <button class="button-white red" (click)="deleteGroup(i.id_group, idx)">Удалить</button>
+            </a>
+          </mat-nav-list>
+        </div>
+      </mat-tab>
+
+
+
+    </mat-tab-group>
+    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"></div>
+  </div>
+</div>

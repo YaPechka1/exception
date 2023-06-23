@@ -1,0 +1,6 @@
+.line{
+    gap:5px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}

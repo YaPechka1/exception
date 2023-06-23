@@ -1,0 +1,111 @@
+<div style="min-height: calc(100vh - 200px)">
+  <div class="block"
+    style="display: flex;justify-content: space-between; align-items: center; align-content: center;flex-wrap: wrap;">
+    <div class="line" style="display: flex; align-items: center; align-content: center; margin: auto;">
+      <img class="avatar" [src]="userInfo.getUserInfo().user_logo_src">
+      <div style="width: 1px;">
+        <button *ngIf="editmode" (click)="openDialogPhotoAvatar()" class="button-white"
+          style="position: relative; bottom:-45px; left: -100px;">Редактировать</button>
+      </div>
+      <form [formGroup]="form" style="display: flex; flex-direction: column; align-items: center;">
+        <input type="text" formControlName="nick_name" placeholder="Имя пользователя" [value]="user_data.nick_name"
+          class="line name" [readonly]="!editmode">
+        <span class="red" *ngIf="form.get('nick_name')!.invalid && form.get('nick_name')!.touched">
+          Заполните поле корректно</span>
+      </form>
+    </div>
+    <nav class="nav line"
+      style="display: flex; flex-wrap:wrap; align-content:center; align-items:center; margin: auto;">
+      <button class="profile-link" (click)="openDialogPhoto()">Фотокарточки</button>
+      <button class="profile-link" (click)="openDialogVideo()">Видео</button>
+      <button class="profile-link" (click)="openDialogFriends()">Друзья</button>
+      <button class="profile-link" (click)="openDialogGroup()">Объединения</button>
+
+      <mat-slide-toggle (click)="getUserData()" [(ngModel)]="editmode"
+        style="font-weight: 550; margin: auto;">Изменить</mat-slide-toggle>
+    </nav>
+  </div>
+
+  <div class="block">
+    <form [formGroup]="form">
+      <table class="table-3" style="text-align: center">
+        <thead>
+          <tr>
+            <th>О себе</th>
+            <th>Контакты</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="О себе" class="one">
+              <textarea placeholder="Информация о пользователе" [readonly]="!editmode"
+                formControlName="about" cdkTextareaAutosize>{{user_data.about_me}}</textarea>
+            </td>
+            <td data-label="Контакты" class="one">
+              <table class="table-3">
+                <tbody>
+                  <tr>
+                    <td data-label="Телефон"  class="hidden green">Телефон</td>
+                    <td data-label="Телефон" class="green"><input placeholder="Телефон:" type="tel" formControlName="tel" class="contact"
+                        [readonly]="!editmode" [value]="user_data.phone">
+                      <br>
+                      <span class="red" *ngIf="form.get('tel')!.invalid && form.get('tel')!.touched">
+                        Заполните поле корректно</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Email" class="hidden green">Почта</td>
+                    <td data-label="Почта" class="green"><input placeholder="Почта:" formControlName="mail" type="email" class="contact"
+                        [readonly]="!editmode" [value]="user_data.mail">
+                      <br>
+                      <span class="red" *ngIf="form.get('mail')!.invalid && form.get('mail')!.touched">
+                        Заполните поле корректно</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="block"  id="q">
+
+
+    <span>Что у вас нового?</span>
+
+    <mat-nav-list>
+      <a mat-list-item  id="np" (click)="openCreateZap()">
+        <object class="icons" type="image/svg+xml" data="./../../assets/svg/plus-square.svg">
+          Your browser does not support SVG
+        </object>
+        Создать запись
+      </a>
+    </mat-nav-list>
+
+
+
+</div>
+
+
+
+  <div class="block" *ngFor="let i of user_record">
+    <div class="zap">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/profile"><img class="user_logo_mini" [src]="userInfo.getUserInfo().user_logo_src">
+          {{i.nick_name}} <p class="zap_inner_time">{{i.date_record}}</p></a>
+
+      </mat-nav-list>
+      <p>{{i.text}}</p>
+      <img *ngIf="i.img_src!=null" class="photo" [src]="i.img_src">
+      <video *ngIf="i.video_src!=null" controls width="100%">
+        <source [src]="i.video_src" type="video/mp4">
+      </video>
+      
+    </div>
+  </div>
+
+  <button (click)="Save()" *ngIf="editmode" class="button-white save"> </button>
+
+</div>

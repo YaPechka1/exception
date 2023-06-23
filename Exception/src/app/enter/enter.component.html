@@ -1,0 +1,41 @@
+
+<div style="min-height: calc(100vh - 200px);">
+<div class="block">
+    <h2>Авторизация</h2>
+    <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+        <div class="form-line">
+            <label for="login">Логин:</label>
+            <input formControlName="login" id="login" type="text">
+            <span class="red" *ngIf="form.get('login')!.invalid && form.get('login')!.touched">
+            <span *ngIf="form.get('login')!.errors!['required']">Поле не должно быть пустым</span>
+            <span *ngIf="form.get('login')!.errors!['minlength']">Поле должно иметь длину минимум 2 символа</span>
+            </span>
+        </div>
+        <div class="form-line">
+            <label for="password">Пароль:</label>
+            <input formControlName="password" id="password" type="password">
+            <span class="red" *ngIf="form.get('password')!.invalid && form.get('password')!.touched">
+                <span *ngIf="form.get('password')!.errors!['required']">Поле не должно быть пустым</span>
+                <span *ngIf="form.get('password')!.errors!['minlength']">Поле должно иметь длину минимум 8 символов</span>
+                </span>
+            <br><a routerLink="/enter/forget" class="link">Забыли пароль?</a>
+        </div>
+        <div class="form-line">
+            <span class="red">{{message}}</span>
+            <br>
+        <button [disabled]="form.invalid" type="submit" class="button-white">Войти</button>
+        </div>
+    </form>
+
+</div>
+<div class="block">
+    <h2>Вы здесь впервые?</h2>
+    <p> Пройдите регистрацию ниже по ссылке!</p>
+    <div class="form-line">
+    <a routerLink="/enter/reg"><button class="button-white">Регистрация</button></a>
+    </div>
+</div>
+</div>
+

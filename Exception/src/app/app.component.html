@@ -1,0 +1,54 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div style="display: flex">
+      <button *ngIf="getEnter()" style="color: white;" mat-icon-button (click)="sidenav.toggle();" class="menu-button-q"></button>
+      <h1 style="font-size: 26px " (window:resize)="editWindow($event)">Exception</h1>
+    </div>
+    <nav class="nav">
+      <a class="nav-link" routerLink="">Информация</a>
+      <a class="nav-link" routerLink="enter" *ngIf="!getEnter()"><button class="button-white">Войти</button></a>
+      <button *ngIf="screenWidth<=550" mat-icon-button [matMenuTriggerFor]="menu" class="more">
+        <mat-menu #menu="matMenu">
+          <button class="inner_menu" mat-menu-item>
+            <object class="icons" type="image/svg+xml" data="./../assets/svg/info-square-fill.svg">Your browser does not
+              support SVG</object><a class="inner-menu" routerLink="/">Информация</a>
+          </button>
+          <button *ngIf="!getEnter()" class="inner_menu" mat-menu-item>
+            <object class="icons" type="image/svg+xml" data="./../assets/svg/door-open-fill.svg">Your browser does not support
+              SVG</object><a class="inner-menu" routerLink="/enter">Вход</a>
+          </button>
+        </mat-menu>
+      </button>
+
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="mode"  [opened]="getEnter()"[ngClass]="{
+    stick:scrollValueQ>=64
+  }">
+
+    <mat-nav-list >
+      <a mat-list-item routerLink="profile"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/person-fill.svg">Your browser does not support SVG</object>Профиль</a>
+      <a mat-list-item routerLink="message"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/send-fill.svg">Your browser does not support SVG</object>Сообщения</a>
+      <a mat-list-item routerLink="friends"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/people-fill.svg">Your browser does not support SVG</object>Друзья</a>
+      <a mat-list-item routerLink="group"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/menu-button-wide.svg">Your browser does not support SVG</object>Объединения</a>
+      <a mat-list-item routerLink="news"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/newspaper.svg">Your browser does not support SVG</object>Новости</a>
+      <a *ngIf="getAdmin()" mat-list-item routerLink="admin"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/star-fill.svg">Your browser does not support SVG</object>Панель администратора</a>
+      <a mat-list-item routerLink="option" id="q"><object class="icons" type="image/svg+xml"
+          data="./../assets/svg/nut-fill.svg">Your browser does not support SVG</object>Настройки</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <router-outlet></router-outlet>
+    <app-footer *ngIf="router.url.split('?')[0]!='/message/viewer_mes'"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

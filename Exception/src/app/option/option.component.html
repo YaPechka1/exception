@@ -1,0 +1,58 @@
+<div style="min-height: calc(100vh - 215px);" class="container">
+    <div class="block">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-line">
+                <label>Текущий логин:</label>
+                <input formControlName="login" type="text">
+            </div>
+            <span class="red" *ngIf="form.get('login')!.invalid && form.get('login')!.touched">
+                <span *ngIf="form.get('login')!.errors!['required']">Поле не должно быть пустым</span>
+                <span *ngIf="form.get('login')!.errors!['minlength']">Поле должно иметь длину минимум 2 символа</span>
+            </span>
+            <div class="form-line">
+                <label>Новый логин:</label>
+                <input formControlName="loginNew" type="text">
+            </div>
+            <span class="red" *ngIf="form.get('loginNew')!.invalid && form.get('loginNew')!.touched">
+                <span *ngIf="form.get('loginNew')!.errors!['required']">Поле не должно быть пустым</span>
+                <span *ngIf="form.get('loginNew')!.errors!['minlength']">Поле должно иметь длину минимум 2
+                    символа</span>
+            </span>
+            <div class="form-line">
+                <button [disabled]="form.invalid" type="submit" class="button-white">Изменить</button>
+            </div>
+        </form>
+        <p id="total">{{message}}</p>
+    </div>
+    <div class="block">
+        <form [formGroup]="formPassword" (ngSubmit)="onSubmitPassword()">
+            <div class="form-line">
+                <label>Текущий пароль:</label>
+                <input formControlName="password" type="password">
+            </div>
+
+            <span class="red" *ngIf="formPassword.get('password')!.invalid && formPassword.get('password')!.touched">
+                <span *ngIf="formPassword.get('password')!.errors!['required']">Поле не должно быть пустым</span>
+                <span *ngIf="formPassword.get('password')!.errors!['minlength']">Поле должно иметь длину минимум 8
+                    символов</span>
+            </span>
+
+            <div class="form-line">
+                <label>Новый пароль:</label>
+                <input formControlName="passwordNew" type="password">
+                
+            </div>
+            <span class="red"
+                *ngIf="formPassword.get('passwordNew')!.invalid && formPassword.get('passwordNew')!.touched">
+                <span *ngIf="formPassword.get('passwordNew')!.errors!['required']">Поле не должно быть пустым</span>
+                <span *ngIf="formPassword.get('passwordNew')!.errors!['minlength']">Поле должно иметь длину минимум 8 символов</span>
+            </span>
+            <div class="form-line">
+                <button [disabled]="formPassword.invalid" type="submit" class="button-white">Изменить</button>
+            </div>
+            <p id="total">{{messagePassword}}</p>
+        </form>
+    </div>
+</div>
+<div class="exit" (click)="exit()"><img src="./../../assets/svg/box-arrow-right.svg" alt=""></div>
+<!-- <div class="delete" (click)="deleteUser()"><img src="./../../assets/svg/person-x-fill.svg" alt=""></div> -->

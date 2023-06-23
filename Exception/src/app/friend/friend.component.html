@@ -1,0 +1,71 @@
+<div style="min-height: calc(100vh - 200px);">
+  <div class="block">
+    <mat-tab-group (selectedIndexChange)="editTest($event)" mat-align-tabs="center" mat-stretch-tabs>
+      <mat-tab label="Мои друзья">
+        <div style="padding: 10px;">
+          <input type="text" placeholder="Мои друзья:" [(ngModel)]="search">
+          <mat-nav-list>
+            <a *ngFor="let i of  user_friend | filter:search; let idx = index " class="link-line" mat-list-item>
+              <a routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+              </a>
+              <button class="button-white red align-rigth" (click)="deleteFriend(i.id_user,idx)">Удалить</button>
+            </a>
+          </mat-nav-list>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Мои заявки">
+        <div style="padding: 10px;">
+          <input type="text" placeholder="Заявки:" [(ngModel)]="search2" >
+          <mat-nav-list>
+            <a *ngFor="let i of  user_my | filter:search2; let idx = index" mat-list-item class="link-line">
+              <a routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+              </a>
+              <button class="button-white red align-rigth" (click)="deleteMyApplication(i.id_user,idx)">Удалить</button>
+            </a>
+          </mat-nav-list>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Ожидают ответа">
+        <div style="padding: 10px;">
+          <input type="text" placeholder="Заявки:" [(ngModel)]="search1">
+          <mat-nav-list>
+            <a *ngFor="let i of  user_application | filter:search1; let idx = index" mat-list-item class="link-line">
+              <a routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+              </a>
+              <div class="align-rigth">
+              <button class="button-white" (click)="acceptApplication(i.id_user, idx)">Принять</button> 
+              <button class="button-white red" (click)="deleteApplication(i.id_user,idx)">Отклонить</button>
+              </div> 
+            </a>
+
+          </mat-nav-list>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Все люди">
+        <div style="padding: 10px;">
+          <input type="text" [(ngModel)]="user_name" (input)="getUserOnSearch(true)" placeholder="Все люди:">
+          <mat-nav-list>
+            <a *ngFor="let i of user_list;" mat-list-item class="link-line">
+              <a routerLink="/profile/viewer_prof" [queryParams]="{id:i.id_user}">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+              </a>
+            </a>
+
+          </mat-nav-list>
+        </div>
+        <div *ngIf="test" class="search-results" infiniteScroll [infiniteScrollDistance]="1"
+          [infiniteScrollThrottle]="50" (scrolled)="onScroll()"></div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

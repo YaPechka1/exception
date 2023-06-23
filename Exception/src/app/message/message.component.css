@@ -1,0 +1,92 @@
+p {
+    width: 100%;
+    text-align: right;
+}
+
+.block {
+    border-radius: 5px;
+    width: 55%;
+    margin: 5px;
+}
+.icons{
+    width: 55px;
+    border-radius: 5px;
+}
+
+a {
+    border-radius: 10px;
+    
+}
+
+.min {
+    width: 30%;
+    min-width: 200px;
+    background: none;
+    border: none;
+    box-shadow: none;
+
+}
+
+.container {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+label {
+    position: relative;
+}
+
+label:before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("./../../assets/svg/search.svg") no-repeat;
+    background-position: center;
+
+}
+
+input {
+    padding: 10px 30px;
+    border: none;
+    background-color: white;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.358);
+    /* Параметры тени */
+    font-size: 17.5px;
+
+    width: 70%;
+
+}
+
+.max {
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    .block {
+        width: 95%;
+    }
+
+    .max {
+        display: flex;
+        width: 95%;
+        margin: 10px;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .min {
+        display: none;
+    }
+
+}

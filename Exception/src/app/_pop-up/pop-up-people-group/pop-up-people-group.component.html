@@ -1,0 +1,10 @@
+<div style="width: 100%;display:flex;justify-content: right; "><button class="close" mat-dialog-close></button></div>
+<mat-dialog-content infiniteScroll [scrollWindow]="false" (scrolled)="onScrollTemp()">
+    <mat-nav-list *ngIf="group_people">
+        <a *ngFor="let i of group_people" mat-list-item mat-dialog-close [queryParams]="{id:i.id_people}"
+            routerLink="/profile/viewer_prof">
+            <img class="icons" [src]="i.user_logo_src">
+            {{i.nick_name}}</a>
+    </mat-nav-list>
+    <h2 *ngIf="!group_people" class="empty">Пусто</h2>
+</mat-dialog-content>

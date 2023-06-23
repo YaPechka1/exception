@@ -1,0 +1,23 @@
+input{
+    width: 100%;
+    font-size: 17.5px;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: solid 2px black;
+    outline: none;
+
+}
+.icons{
+    width: 55px;
+    border-radius: 5px;
+}
+
+p{
+    text-align: right;
+    width: 100%;
+    min-width: 100px;
+}
+::ng-deep .mat-ink-bar{
+    background: green!important;
+}

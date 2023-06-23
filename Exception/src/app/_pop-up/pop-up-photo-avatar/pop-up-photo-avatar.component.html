@@ -1,0 +1,10 @@
+<div style="width: 100%;display:flex;justify-content: space-between; " ><h4 style="padding: 0; font-weight:500">Сменить аватар</h4><button class="close"  mat-dialog-close></button> </div>
+
+<mat-dialog-content>
+    <div style="width:100%;display:flex;align-items: center; align-content: center; justify-content: space-evenly;">
+        <img [src]="data.user_logo_src" width="33%"><div><button (click)="editUserAvatar(data.user_logo_src)" class="button-white" mat-dialog-close>Заменить</button><button (click)="editUserAvatar('./../assets/svg/person-fill.svg')" class="button-white red" mat-dialog-close>без аватара</button></div>
+        </div>
+        <div style="display:flex;margin:auto; width:100%; flex-wrap: wrap; justify-content:center; align-items: center;">
+            <img class="photo_mini" *ngFor="let i of data.img" [src]="i.img_src" (click)="data.user_logo_src=i.img_src" alt="picture">
+        </div>
+</mat-dialog-content>

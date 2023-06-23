@@ -1,0 +1,36 @@
+{
+  "name": "exception_backend",
+  "version": "1.0.0",
+  "description": "backend for Exception",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "keywords": [
+    "angular",
+    "nodejs",
+    "express",
+    "fullstack",
+    "social"
+  ],
+  "author": "Ivan Talyzov IT-19 YaPechka",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "passport-jwt.socketio": "^0.1.1",
+    "socket.io": "^4.6.1"
+  }
+}

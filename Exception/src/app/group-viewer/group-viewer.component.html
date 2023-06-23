@@ -1,0 +1,75 @@
+<div style="min-height: calc(100vh - 200px);">
+  <div class="block" style="display: flex;justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="line" style="display: flex; align-items: center; align-content: center; margin: auto;">
+      <img class="avatar line" [src]="group_info.group_logo_url">
+      <h3 class="line name">{{group_info.group_name}}</h3>
+    </div>
+    <nav class="nav line"
+      style="display: flex; flex-wrap:wrap; align-content:center; align-items:center; margin: auto;">
+
+
+      <button class="profile-link" (click)="openDialogPhoto()">Фотокарточки</button>
+      <button class="profile-link" (click)="openDialogVideo()">Видео</button>
+      <button class="profile-link" (click)="openDialogPeople()">Участники</button>
+      <button *ngIf="group_status==0" (click)="pushPeople()" class="plus_man"></button>
+      <button *ngIf="group_status==1" (click)="deletePeople()" class="button-white red">Покинуть</button>
+
+    </nav>
+  </div>
+  <div class="block">
+    <table class="table-3" style="text-align: center">
+      <thead>
+        <tr>
+          <th>Информация</th>
+          <th>Контакты</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Информация" class="one"><textarea placeholder="Информация о группе:">{{group_info.about}}</textarea></td>
+          <td data-label="Контакты" class="one">
+            <table class="table-3">
+              <tbody>
+
+                <tr>
+                  <td data-label="Администратор" class="hidden green">Администратор</td>
+                  <td data-label="Администратор" class="green"><mat-nav-list><a mat-list-item
+                        routerLink="/profile/viewer_prof" [queryParams]="{id:group_info.id_admin}"><img class="icons"
+                          [src]="group_info.user_logo_src">{{group_info.nick_name}} </a></mat-nav-list></td>
+                </tr>
+                <tr>
+                  <td data-label="Email" class="hidden green">Почта</td>
+                  <td data-label="Почта" class="green"><input placeholder="Почта:" type="text" readonly class="contact"
+                      [value]="group_info.mail"></td>
+                </tr>
+                <tr>
+                  <td data-label="Тематика" class="hidden green">Тематика</td>
+                  <td data-label="Тематика" class="green"><input placeholder="Тематика:" type="text" readonly class="contact"
+                      [value]="group_info.theme"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="block" *ngFor="let i of group_record">
+    <div class="zap">
+      <mat-nav-list>
+        <a mat-list-item><img class="user_logo_mini" [src]="i.group_logo_url"> {{i.group_name}} <p
+            class="zap_inner_time">{{i.date_record}}</p></a>
+
+      </mat-nav-list>
+      <p>{{i.text}}</p>
+      <img *ngIf="i.img_src!=null" class="photo" [src]="i.img_src">
+      <video *ngIf="i.video_src!=null" controls width="100%">
+        <source [src]="i.video_src" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div *ngIf="status" class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"></div>

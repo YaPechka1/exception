@@ -1,0 +1,9 @@
+<div class="docs">
+    <mat-spinner class="load" *ngIf="load" diameter="45">
+    </mat-spinner>
+    <ngx-doc-viewer [url]="'https://demo-exception.space:5000/upload/info/diplom.docx'" viewer="google"
+    [googleCheckContentLoaded]="true" [googleCheckInterval]=3000 [googleMaxChecks]=5 (loaded)="load=false"
+    class="docs"
+    >
+</ngx-doc-viewer>
+</div>

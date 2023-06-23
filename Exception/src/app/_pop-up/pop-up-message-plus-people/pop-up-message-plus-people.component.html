@@ -1,0 +1,11 @@
+<div style="width: 100%;display:flex;justify-content: right; "><button class="close" mat-dialog-close></button></div>
+<mat-dialog-content>
+    <mat-nav-list *ngIf="user_friend">
+        <a *ngFor="let i of user_friend" mat-list-item>
+            <img class="icons" [src]="i.user_logo_src">
+            <span>{{i.nick_name}}</span><button [id]="'btnPlus'+i.id_user" [disabled]="getDisabled('btn'+i.id_user)"  (click)="pushPeopleMessage(i.id_user,'btnPlus'+i.id_user)" class="button-white">Добавить</button></a>
+    </mat-nav-list>
+    <h2 *ngIf="user_friend.length==0" class="empty">Пусто</h2>
+</mat-dialog-content>
+<mat-nav-list style="margin: auto;">
+</mat-nav-list>

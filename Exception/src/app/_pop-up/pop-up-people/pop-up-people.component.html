@@ -1,0 +1,10 @@
+<div style="width: 100%;display:flex;justify-content: right; "><button class="close" mat-dialog-close></button></div>
+<mat-dialog-content>
+    <mat-nav-list *ngIf="data">
+        <a *ngFor="let i of data" mat-list-item mat-dialog-close [queryParams]="{id:i.id_user}"
+            routerLink="/profile/viewer_prof">
+            <img class="icons" [src]="i.user_logo_src">
+            {{i.nick_name}}</a>
+    </mat-nav-list>
+    <h2 *ngIf="!data" class="empty">Пусто</h2>
+</mat-dialog-content>

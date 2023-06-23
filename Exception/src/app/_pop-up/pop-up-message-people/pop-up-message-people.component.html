@@ -1,0 +1,29 @@
+<div style="width: 100%;display:flex;justify-content:space-between; ">
+    <div class="line" *ngIf="status">
+        <input type="text" [(ngModel)]="name_message">
+        <button class="button-white" (click)="editName()">Изменить</button>
+    </div>
+    <button class="close" mat-dialog-close></button>
+</div>
+<mat-dialog-content>
+    <mat-nav-list *ngIf="message_people">
+        <a *ngFor="let i of message_people" mat-list-item>
+            <a mat-dialog-close [queryParams]="{id:i.id_user}" class="line" routerLink="/profile/viewer_prof">
+                <img class="icons" [src]="i.user_logo_src">
+                <span>{{i.nick_name}}</span>
+            </a>
+            <button [ngClass]="{dis:(i.id_user==id_user)}" *ngIf="status" class="button-white red" [id]="'btn'+i.id_user"
+                [disabled]="getDisabled('btn'+i.id_user) || i.id_user==id_user"
+                (click)="deletePeopleMessage(i.id_user, 'btn'+i.id_user)">Удалить</button>
+        </a>
+
+    </mat-nav-list>
+    <h2 *ngIf="!message_people" class="empty">Пусто</h2>
+</mat-dialog-content>
+<div class="temp">
+    <button *ngIf="status" class="button-white" (click)="openModal()">
+        <img src="./../../assets/svg/person-plus-fill.svg" alt=""> Пригласить</button>
+    
+    <button class="button-white red" *ngIf="status" mat-dialog-close (click)="deleteMessageDialog()">Удалить беседу</button>
+
+</div>

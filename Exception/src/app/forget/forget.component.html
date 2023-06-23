@@ -1,0 +1,20 @@
+<div style="min-height: calc(100vh - 200px);">
+<div class="block">
+    <h2>Восстановление доступа</h2>
+    <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+        <div class="form-line">
+            <label for="login">Введите ваш логин:</label>
+            <input formControlName="login" id="login" type="text" required>
+        </div>
+        <div class="form-line">
+            <p>На почту вашего аккаунта прийдет письмо для Восстановления доступа к аккаунту</p>
+        </div>
+        <div class="form-line">
+        <button [disabled]="form.invalid" type="submit" class="button-white">получить код</button>
+        </div>
+    </form>
+
+</div>
+</div>

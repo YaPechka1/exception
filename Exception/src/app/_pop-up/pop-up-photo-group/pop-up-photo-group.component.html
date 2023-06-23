@@ -1,0 +1,15 @@
+<div style="width: 100%;display:flex;justify-content: space-between; ">
+    <h4 style="padding: 0; font-weight:500">Фотокарточки</h4><button class="close" mat-dialog-close></button>
+</div>
+<mat-dialog-content *ngIf="group_img" infiniteScroll [scrollWindow]="false" (scrolled)="onScrollTemp()">
+    <div style="display:flex;margin:auto; width:100%; flex-wrap: wrap; justify-content:center; align-items: center;">
+        <img class="photo_mini" *ngFor="let i of group_img" [src]="i.img_src" (click)="img_src=i.img_src;show=!show"
+            alt="picture">
+    </div>
+    <h2 *ngIf="!group_img" class="empty">Пусто</h2>
+
+
+</mat-dialog-content>
+<div class="all" *ngIf="show" (click)="show=!show">
+    <img [src]="img_src" alt="">
+</div>

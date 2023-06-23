@@ -1,0 +1,62 @@
+mat-dialog-content{
+    display: grid;
+    gap:5px;
+}
+textarea{
+    min-height: 300px;
+}
+video,img,picture{
+    width: 100%;
+}
+picture{
+    position: relative;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+.ent{
+    min-width: 100%;
+    min-height: 300px;
+    border: dashed 2px green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.rel{
+    position: relative;
+}
+.row{
+    display: flex;
+    gap:5px;
+    width: 100%;
+	margin-top: 15px;
+}
+.abs{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 30px;
+    background-color: white;
+    border-radius: 5px;
+    border:solid 2px black;
+    z-index: 55;
+}
+.ent img{
+    width: 50px;
+}
+textarea{
+    width: 100%;
+}
+.icons{
+    width: 25px;
+    height: 25px;;
+}
+.button-white{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

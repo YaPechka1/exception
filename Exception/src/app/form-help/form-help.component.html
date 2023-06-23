@@ -1,0 +1,31 @@
+<div style="min-height: calc(100vh - 200px);">
+    <div class="block">
+        <h2>Форма обратной связи</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-line">
+                <label>Тема обращения:</label>
+                <input formControlName="theme" id="login" type="text" required>
+            </div>
+
+
+            <div class="form-line">
+                <label>Электронная почта:</label>
+                <input formControlName="mail" id="email" type="email" required>
+            </div>
+
+            <div class="form-line">
+                <label>URL:</label>
+                <input formControlName="url"  type="url" required>
+            </div>
+            <div class="form-line">
+                <label for="password">Сообщение:</label>
+
+                <textarea formControlName="text"></textarea>
+            </div>
+            <div class="form-line">
+                <button [disabled]="form.invalid" type="submit" class="button-white">Отправить</button>
+            </div>
+        </form>
+
+    </div>
+</div>
